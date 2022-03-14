@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  checkinservice:
+    image: checkinservice
+    build:
+      context: .
+      dockerfile: Checkin.Service/Dockerfile
+    ports:
+      - 8000:8000
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw

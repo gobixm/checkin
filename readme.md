@@ -1,0 +1,1 @@
+My pet project to learn EFCore
