@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkin.Service", "Checkin.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkin.Service.Tests", "Checkin.Service.Tests\Checkin.Service.Tests.csproj", "{3ECF174E-D4D6-4120-B758-B8538DDC0211}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkin.Application", "Checkin.Application\Checkin.Application.csproj", "{72097FCF-EF67-498E-9F3C-F3941204079E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{3ECF174E-D4D6-4120-B758-B8538DDC0211}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3ECF174E-D4D6-4120-B758-B8538DDC0211}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3ECF174E-D4D6-4120-B758-B8538DDC0211}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72097FCF-EF67-498E-9F3C-F3941204079E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72097FCF-EF67-498E-9F3C-F3941204079E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72097FCF-EF67-498E-9F3C-F3941204079E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72097FCF-EF67-498E-9F3C-F3941204079E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
