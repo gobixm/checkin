@@ -13,31 +13,31 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors();
 
 builder.Services.AddDbContext<AccountDbContext>((sp, options) =>
-        {
-            var config = sp.GetService<IConfiguration>();
-            options.UseSqlServer(config.GetConnectionString("AccountDb"));
+{
+    var config = sp.GetService<IConfiguration>();
+    options.UseSqlServer(config.GetConnectionString("AccountDb"));
 
-            options.UseOpenIddict();
-        });
+    options.UseOpenIddict();
+});
 
 builder.Services.AddIdentity<UserAccount, IdentityRole>()
     .AddEntityFrameworkStores<AccountDbContext>()
     .AddDefaultTokenProviders();
 
 builder.Services.Configure<IdentityOptions>(options =>
-    {
-        options.ClaimsIdentity.UserNameClaimType = Claims.Name;
-        options.ClaimsIdentity.UserIdClaimType = Claims.Subject;
-        options.ClaimsIdentity.RoleClaimType = Claims.Role;
-        options.ClaimsIdentity.EmailClaimType = Claims.Email;
-    });
+{
+    options.ClaimsIdentity.UserNameClaimType = Claims.Name;
+    options.ClaimsIdentity.UserIdClaimType = Claims.Subject;
+    options.ClaimsIdentity.RoleClaimType = Claims.Role;
+    options.ClaimsIdentity.EmailClaimType = Claims.Email;
+});
 
 builder.Services.AddQuartz(options =>
-        {
-            options.UseMicrosoftDependencyInjectionJobFactory();
-            options.UseSimpleTypeLoader();
-            options.UseInMemoryStore();
-        });
+{
+    options.UseMicrosoftDependencyInjectionJobFactory();
+    options.UseSimpleTypeLoader();
+    options.UseInMemoryStore();
+});
 
 builder.Services.AddQuartzHostedService(options => options.WaitForJobsToComplete = true);
 
@@ -45,7 +45,7 @@ builder.Services.AddOpenIddict()
     .AddCore(options =>
     {
         options.UseEntityFrameworkCore()
-           .UseDbContext<AccountDbContext>();
+            .UseDbContext<AccountDbContext>();
         options.UseQuartz();
     })
     .AddServer(options =>

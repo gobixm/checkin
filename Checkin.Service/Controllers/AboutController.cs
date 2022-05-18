@@ -1,4 +1,3 @@
-
 using Checkin.Service.Models.Authorizations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -23,12 +22,8 @@ public sealed class AboutController : Controller
     public async Task<IActionResult> GetMessage()
     {
         var user = await _userManager.GetUserAsync(User);
-        if (user == null)
-        {
-            return BadRequest();
-        }
+        if (user == null) return BadRequest();
 
         return Content($"{user.UserName} has been successfully authenticated.");
     }
-
 }

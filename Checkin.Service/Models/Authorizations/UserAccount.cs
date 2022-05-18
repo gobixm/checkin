@@ -4,5 +4,4 @@ namespace Checkin.Service.Models.Authorizations;
 
 public sealed class UserAccount : IdentityUser
 {
-
 }
