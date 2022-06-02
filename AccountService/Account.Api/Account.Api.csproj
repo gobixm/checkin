@@ -5,8 +5,8 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-        <AssemblyName>AccountApi</AssemblyName>
-        <RootNamespace>AccountApi</RootNamespace>
+        <RootNamespace>Checkin.AccountService.Api</RootNamespace>
+        <AssemblyName>Checkin.Account.Api</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
@@ -20,10 +20,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Account.Repository\Account.Repository.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Controllers" />
+      <ProjectReference Include="..\Account.Service\Account.Service.csproj" />
     </ItemGroup>
 
 </Project>

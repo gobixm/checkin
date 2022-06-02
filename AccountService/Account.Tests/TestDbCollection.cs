@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace AccountTests;
+namespace Checkin.AccountService.Tests;
 
 [CollectionDefinition("db")]
 public sealed class TestDbCollection : ICollectionFixture<TestDbFixture>

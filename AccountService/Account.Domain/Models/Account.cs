@@ -1,10 +1,13 @@
-namespace AccountDomain.Models;
+using Checkin.Common.Domain;
 
-public sealed class Account
+namespace Checkin.AccountService.Domain.Models;
+
+public sealed class Account : IEntity<int>
 {
-    public int AccountId { get; set; }
     public string Name { get; set; } = null!;
+    public string Login { get; set; } = null!;
     public List<string>? Interests { get; set; }
     public DateTime Created { get; set; }
     public List<AccountFriend> Friends { get; set; } = null!;
+    public int Id { get; set; }
 }

@@ -3,11 +3,11 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using AccountDomain.Models;
+using Checkin.AccountService.Domain.Models;
 using FluentAssertions;
 using Xunit;
 
-namespace AccountTests.Domains;
+namespace Checkin.AccountService.Tests.Domains;
 
 [Collection("db")]
 public sealed class AccountEventTests
@@ -39,14 +39,16 @@ public sealed class AccountEventTests
         //assert
         await using var readContext = _fixture.CreateContext();
         var savedEvent = readContext.AccountEvents
-            .FirstOrDefault(x => x.AccountEventId == domainEvent.AccountEventId);
+            .FirstOrDefault(x => x.Id == domainEvent.Id);
+
+        savedEvent.Should().NotBeNull();
 
         using var stream = new MemoryStream();
         await using var writer = new Utf8JsonWriter(stream);
-        savedEvent.Body.WriteTo(writer);
+        savedEvent?.Body.WriteTo(writer);
         await writer.FlushAsync();
 
-        savedEvent.AccountEventId.Should().NotBe(0);
+        savedEvent?.Id.Should().NotBe(0);
         var jsonString = Encoding.UTF8.GetString(stream.ToArray());
         jsonString.Should().BeEquivalentTo(expectedJson);
     }

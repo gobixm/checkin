@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AccountDomain.Models;
+using Checkin.AccountService.Domain.Models;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
-namespace AccountTests.Domains;
+namespace Checkin.AccountService.Tests.Domains;
 
 [Collection("db")]
 public sealed class AccountTests
@@ -27,6 +27,7 @@ public sealed class AccountTests
         var account = new Account
         {
             Name = "foo",
+            Login = "login",
             Interests = new List<string> { "tag1", "tag2" }
         };
 
@@ -37,7 +38,7 @@ public sealed class AccountTests
         //assert
         await using var readContext = _fixture.CreateContext();
         var savedAccount = readContext.Accounts
-            .FirstOrDefault(x => x.AccountId == account.AccountId);
+            .FirstOrDefault(x => x.Id == account.Id);
 
         savedAccount.Should().BeEquivalentTo(account);
     }
@@ -47,9 +48,9 @@ public sealed class AccountTests
     {
         // arrange
         await using var writeContext = _fixture.CreateContext();
-        var account = new Account { Name = "user" };
-        var friend1 = new Account { Name = "friend1" };
-        var friend2 = new Account { Name = "friend2" };
+        var account = new Account { Name = "user", Login = "login1" };
+        var friend1 = new Account { Name = "friend1", Login = "login2" };
+        var friend2 = new Account { Name = "friend2", Login = "login3" };
 
         // act
         account.Friends = new List<AccountFriend>
@@ -66,7 +67,7 @@ public sealed class AccountTests
         var savedAccount = readContext.Accounts
             .Include(x => x.Friends)
             .ThenInclude(x => x.Friend)
-            .FirstOrDefault(x => x.AccountId == account.AccountId);
+            .FirstOrDefault(x => x.Id == account.Id);
 
         savedAccount.Friends.Should().HaveCount(2);
         savedAccount.Friends[0].Friend.Name.Should().Be(account.Friends[0].Friend.Name);

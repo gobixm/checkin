@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
-using AccountRepository;
+using Checkin.AccountService.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace AccountRepository.Migrations
+namespace Checkin.AccountService.Repository.Migrations
 {
     [DbContext(typeof(AccountDbContext))]
     partial class AccountDbContextModelSnapshot : ModelSnapshot
@@ -24,13 +24,13 @@ namespace AccountRepository.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("AccountDomain.Models.Account", b =>
+            modelBuilder.Entity("Checkin.AccountService.Domain.Models.Account", b =>
                 {
-                    b.Property<int>("AccountId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("AccountId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
@@ -40,22 +40,29 @@ namespace AccountRepository.Migrations
                     b.Property<List<string>>("Interests")
                         .HasColumnType("text[]");
 
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("AccountId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("Login")
+                        .IsUnique();
 
                     b.ToTable("Accounts");
                 });
 
-            modelBuilder.Entity("AccountDomain.Models.AccountEvent", b =>
+            modelBuilder.Entity("Checkin.AccountService.Domain.Models.AccountEvent", b =>
                 {
-                    b.Property<int>("AccountEventId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("AccountEventId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<JsonDocument>("Body")
                         .IsRequired()
@@ -69,12 +76,12 @@ namespace AccountRepository.Migrations
                     b.Property<int>("Discriminator")
                         .HasColumnType("integer");
 
-                    b.HasKey("AccountEventId");
+                    b.HasKey("Id");
 
                     b.ToTable("AccountEvents");
                 });
 
-            modelBuilder.Entity("AccountDomain.Models.AccountFriend", b =>
+            modelBuilder.Entity("Checkin.AccountService.Domain.Models.AccountFriend", b =>
                 {
                     b.Property<int>("AccountId")
                         .HasColumnType("integer");
@@ -94,15 +101,15 @@ namespace AccountRepository.Migrations
                     b.ToTable("AccountFriends");
                 });
 
-            modelBuilder.Entity("AccountDomain.Models.AccountFriend", b =>
+            modelBuilder.Entity("Checkin.AccountService.Domain.Models.AccountFriend", b =>
                 {
-                    b.HasOne("AccountDomain.Models.Account", "Account")
+                    b.HasOne("Checkin.AccountService.Domain.Models.Account", "Account")
                         .WithMany("Friends")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AccountDomain.Models.Account", "Friend")
+                    b.HasOne("Checkin.AccountService.Domain.Models.Account", "Friend")
                         .WithMany()
                         .HasForeignKey("FriendId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -113,7 +120,7 @@ namespace AccountRepository.Migrations
                     b.Navigation("Friend");
                 });
 
-            modelBuilder.Entity("AccountDomain.Models.Account", b =>
+            modelBuilder.Entity("Checkin.AccountService.Domain.Models.Account", b =>
                 {
                     b.Navigation("Friends");
                 });

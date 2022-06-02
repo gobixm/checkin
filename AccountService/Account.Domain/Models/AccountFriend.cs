@@ -1,4 +1,4 @@
-namespace AccountDomain.Models;
+namespace Checkin.AccountService.Domain.Models;
 
 public sealed class AccountFriend
 {

@@ -1,8 +1,8 @@
-using AccountDomain.EntityMappers;
-using AccountDomain.Models;
+using Checkin.AccountService.Domain.EntityMappers;
+using Checkin.AccountService.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace AccountRepository;
+namespace Checkin.AccountService.Repository;
 
 public sealed class AccountDbContext : DbContext
 {

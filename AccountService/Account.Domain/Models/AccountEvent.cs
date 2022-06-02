@@ -1,10 +1,11 @@
 using System.Text.Json;
+using Checkin.Common.Domain;
 
-namespace AccountDomain.Models;
+namespace Checkin.AccountService.Domain.Models;
 
-public sealed class AccountEvent
+public sealed class AccountEvent : IEntity<int>
 {
-    public int AccountEventId { get; set; }
+    public int Id { get; set; }
     public AccountEventDiscriminator Discriminator { get; set; }
     public JsonDocument Body { get; set; } = null!;
     public DateTime Created { get; set; }

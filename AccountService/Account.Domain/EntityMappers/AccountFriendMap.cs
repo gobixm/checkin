@@ -1,8 +1,8 @@
-using AccountDomain.Models;
+using Checkin.AccountService.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AccountDomain.EntityMappers;
+namespace Checkin.AccountService.Domain.EntityMappers;
 
 public sealed class AccountFriendMap : IEntityTypeConfiguration<AccountFriend>
 {

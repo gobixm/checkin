@@ -8,9 +8,9 @@
 
         <LangVersion>10</LangVersion>
 
-        <AssemblyName>AccountTests</AssemblyName>
+        <RootNamespace>Checkin.AccountService.Tests</RootNamespace>
 
-        <RootNamespace>AccountTests</RootNamespace>
+        <AssemblyName>Checkin.Account.Tests</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>

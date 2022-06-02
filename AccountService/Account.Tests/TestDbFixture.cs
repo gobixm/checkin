@@ -1,7 +1,7 @@
-using AccountRepository;
+using Checkin.AccountService.Repository;
 using Microsoft.EntityFrameworkCore;
 
-namespace AccountTests;
+namespace Checkin.AccountService.Tests;
 
 public sealed class TestDbFixture
 {

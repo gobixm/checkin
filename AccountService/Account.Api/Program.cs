@@ -1,4 +1,7 @@
-using AccountRepository;
+using Checkin.AccountService.Repository;
+using Checkin.AccountService.Repository.Repositories;
+using Checkin.AccountService.Service.Services;
+using Checkin.Common.Repositories.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +13,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<AccountDbContext>(x => x.UseNpgsql("Host=localhost;Database=account_db_test;Username=postgres;Password=postgres"));
+// todo: config
+builder.Services.AddDbContext<DbContext, AccountDbContext>(x =>
+    x.UseNpgsql("Host=localhost;Database=account;Username=postgres;Password=postgres"));
+
+//todo: incapsulate
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddTransient<IAccountRepository, AccountRepository>();
 
 var app = builder.Build();
 
@@ -26,5 +36,13 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//todo: move to migrator or script
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<DbContext>();
+    context.Database.EnsureCreated();
+    context.Database.MigrateAsync();
+}
 
 app.Run();
