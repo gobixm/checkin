@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>Checkin.Common.Api</AssemblyName>
+        <RootNamespace>Checkin.Common.Api</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="Microsoft.AspNetCore.Http.Abstractions">
+            <HintPath>..\..\..\..\..\..\..\usr\share\dotnet\shared\Microsoft.AspNetCore.App\6.0.2\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Common.Exceptions\Common.Exceptions.csproj" />
+      <ProjectReference Include="..\Common.Services\Common.Services.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Models" />
+    </ItemGroup>
+
+</Project>
