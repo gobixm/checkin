@@ -23,8 +23,8 @@ public sealed class AccountController : ControllerBase
         return await _accountService.CreateAccountAsync(request, cancellationToken);
     }
 
-    [HttpDelete("{id:int}")]
-    public async Task DeleteAccountAsync(int id, CancellationToken cancellationToken)
+    [HttpDelete("{id:guid}")]
+    public async Task DeleteAccountAsync(Guid id, CancellationToken cancellationToken)
     {
         await _accountService.DeleteAccountAsync(id, cancellationToken);
     }

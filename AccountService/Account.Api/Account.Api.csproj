@@ -20,6 +20,10 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Common\Common.Api\Common.Api.csproj" />
+      <ProjectReference Include="..\..\Common\Outbox\Gobi.Outboxes.Ef\Gobi.Outboxes.Ef.csproj" />
+      <ProjectReference Include="..\..\Common\Outbox\Gobi.Outboxes.Services\Gobi.Outboxes.Services.csproj" />
+      <ProjectReference Include="..\..\Common\UnitOfWork\Gobi.UnitOfWorks.Abstractions\Gobi.UnitOfWorks.Abstractions.csproj" />
+      <ProjectReference Include="..\..\Common\UnitOfWork\Gobi.UnitOfWorks.Ef\Gobi.UnitOfWorks.Ef.csproj" />
       <ProjectReference Include="..\Account.Repository\Account.Repository.csproj" />
       <ProjectReference Include="..\Account.Service\Account.Service.csproj" />
     </ItemGroup>

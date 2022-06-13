@@ -1,9 +1,8 @@
 using System.Linq.Expressions;
-using Checkin.Common.Domain;
+using Gobi.UnitOfWorks.Abstractions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace Checkin.Common.Repositories.Repositories;
+namespace Gobi.UnitOfWorks.Ef;
 
 public class Repository<TKey, TEntity> : IRepository<TKey, TEntity> where TEntity : class, IEntity<TKey>, new()
 {

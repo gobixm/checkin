@@ -1,8 +1,6 @@
 ﻿using System.Linq.Expressions;
-using Checkin.Common.Domain;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace Checkin.Common.Repositories.Repositories;
+namespace Gobi.UnitOfWorks.Abstractions;
 
 public interface IRepository<in TKey, TEntity> where TEntity : IEntity<TKey>
 {

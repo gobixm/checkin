@@ -1,4 +1,4 @@
-using Checkin.AccountService.Repository;
+using Checkin.AccountService.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Checkin.AccountService.Tests;

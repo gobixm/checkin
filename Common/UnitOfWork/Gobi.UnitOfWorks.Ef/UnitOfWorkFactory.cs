@@ -1,4 +1,6 @@
-namespace Checkin.Common.Repositories.Repositories;
+using Gobi.UnitOfWorks.Abstractions;
+
+namespace Gobi.UnitOfWorks.Ef;
 
 public sealed class UnitOfWorkFactory : IUnitOfWorkFactory
 {

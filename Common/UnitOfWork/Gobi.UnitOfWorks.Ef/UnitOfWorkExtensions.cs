@@ -1,6 +1,7 @@
+using Gobi.UnitOfWorks.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Checkin.Common.Repositories.Repositories;
+namespace Gobi.UnitOfWorks.Ef;
 
 public static class UnitOfWorkExtensions
 {

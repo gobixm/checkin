@@ -1,4 +1,4 @@
-namespace Checkin.Common.Repositories.Repositories;
+namespace Gobi.UnitOfWorks.Abstractions;
 
 public interface IUnitOfWork : IDisposable, IAsyncDisposable
 {

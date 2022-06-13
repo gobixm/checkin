@@ -1,10 +1,10 @@
 using Checkin.AccountService.Domain.Models;
-using Checkin.Common.Repositories.Repositories;
+using Gobi.UnitOfWorks.Ef;
 using Microsoft.EntityFrameworkCore;
 
-namespace Checkin.AccountService.Repository.Repositories;
+namespace Checkin.AccountService.Repositories.Repositories;
 
-public sealed class AccountRepository : Repository<int, Account>, IAccountRepository
+public sealed class AccountRepository : Repository<Guid, Account>, IAccountRepository
 {
     public AccountRepository(AccountDbContext context) : base(context)
     {

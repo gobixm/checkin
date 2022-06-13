@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\UnitOfWork\Gobi.UnitOfWorks.Abstractions\Gobi.UnitOfWorks.Abstractions.csproj" />
+      <ProjectReference Include="..\Gobi.Outboxes.Domain\Gobi.Outboxes.Domain.csproj" />
+      <ProjectReference Include="..\Gobi.Outboxes.Repositories\Gobi.Outboxes.Repositories.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+    </ItemGroup>
+
+</Project>

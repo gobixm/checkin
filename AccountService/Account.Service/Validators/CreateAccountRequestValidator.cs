@@ -1,4 +1,4 @@
-using Checkin.AccountService.Repository.Repositories;
+using Checkin.AccountService.Repositories.Repositories;
 using Checkin.AccountService.Service.Models;
 using FluentValidation;
 

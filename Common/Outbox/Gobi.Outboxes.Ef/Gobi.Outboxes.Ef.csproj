@@ -4,9 +4,6 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <LangVersion>10</LangVersion>
-        <RootNamespace>Checkin.AccountService.Domain</RootNamespace>
-        <AssemblyName>Checkin.Account.Domain</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
@@ -15,8 +12,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Common\Common.Domain\Common.Domain.csproj" />
-      <ProjectReference Include="..\..\Common\UnitOfWork\Gobi.UnitOfWorks.Abstractions\Gobi.UnitOfWorks.Abstractions.csproj" />
+      <ProjectReference Include="..\Gobi.Outboxes.Domain\Gobi.Outboxes.Domain.csproj" />
+      <ProjectReference Include="..\Gobi.Outboxes.Repositories\Gobi.Outboxes.Repositories.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="EntityMappers" />
+    </ItemGroup>
+    
 </Project>

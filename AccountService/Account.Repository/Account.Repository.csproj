@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>10</LangVersion>
-        <RootNamespace>Checkin.AccountService.Repository</RootNamespace>
+        <RootNamespace>Checkin.AccountService.Repositories</RootNamespace>
         <AssemblyName>Checkin.Account.Repository</AssemblyName>
     </PropertyGroup>
 
@@ -16,6 +16,9 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj" />
+      <ProjectReference Include="..\..\Common\Outbox\Gobi.Outboxes.Domain\Gobi.Outboxes.Domain.csproj" />
+      <ProjectReference Include="..\..\Common\Outbox\Gobi.Outboxes.Ef\Gobi.Outboxes.Ef.csproj" />
+      <ProjectReference Include="..\..\Common\UnitOfWork\Gobi.UnitOfWorks.Ef\Gobi.UnitOfWorks.Ef.csproj" />
       <ProjectReference Include="..\Account.Domain\Account.Domain.csproj" />
     </ItemGroup>
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -26,6 +27,7 @@ public sealed class AccountTests
 
         var account = new Account
         {
+            Id = Guid.NewGuid(),
             Name = "foo",
             Login = "login",
             Interests = new List<string> { "tag1", "tag2" }
@@ -48,9 +50,9 @@ public sealed class AccountTests
     {
         // arrange
         await using var writeContext = _fixture.CreateContext();
-        var account = new Account { Name = "user", Login = "login1" };
-        var friend1 = new Account { Name = "friend1", Login = "login2" };
-        var friend2 = new Account { Name = "friend2", Login = "login3" };
+        var account = new Account { Id =  Guid.NewGuid(), Name = "user", Login = "login1" };
+        var friend1 = new Account { Id =  Guid.NewGuid(), Name = "friend1", Login = "login2" };
+        var friend2 = new Account { Id =  Guid.NewGuid(), Name = "friend2", Login = "login3" };
 
         // act
         account.Friends = new List<AccountFriend>

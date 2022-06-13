@@ -1,4 +1,4 @@
-﻿namespace Checkin.Common.Domain;
+﻿namespace Gobi.UnitOfWorks.Abstractions;
 
 public interface IEntity<TKey>
 {

@@ -1,9 +1,9 @@
 using Checkin.AccountService.Domain.Models;
-using Checkin.Common.Repositories.Repositories;
+using Gobi.UnitOfWorks.Abstractions;
 
-namespace Checkin.AccountService.Repository.Repositories;
+namespace Checkin.AccountService.Repositories.Repositories;
 
-public interface IAccountRepository : IRepository<int, Account>
+public interface IAccountRepository : IRepository<Guid, Account>
 {
     Task<bool> GetLoginExistsAsync(string login, CancellationToken cancellationToken = default);
 }
