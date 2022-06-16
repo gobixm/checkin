@@ -9,7 +9,7 @@ namespace Gobi.MessageBus.Tests.Serializers;
 public sealed class MessageRecordSerializerTests
 {
     [Fact]
-    public void Foo()
+    public void Serialize_Message_Serializer()
     {
         // arrange
         using var stream = new MemoryStream();
