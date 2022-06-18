@@ -4,8 +4,9 @@ namespace Gobi.MessageBus.Services.Services;
 
 public interface IMessageBus
 {
-    Task PublishAsync<T>(string topic, Message<T> message, CancellationToken cancellationToken = default)
+    Task PublishAsync<T>(string subject, Message<T> message, CancellationToken cancellationToken = default)
         where T : class;
 
-    Task<IMessageConsumer> ConsumeAsync(string topic, CancellationToken cancellationToken = default);
+    IMessageBusConsumer<T> ConsumeAsync<T>(string subject, CancellationToken cancellationToken = default)
+        where T : class;
 }

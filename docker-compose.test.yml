@@ -9,3 +9,11 @@ services:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
       POSTGRES_DB: "account_test"
+
+  nats:
+    image: 'nats:latest'
+    command:
+      - "--jetstream"
+    ports:
+      - "8222:8222"
+      - "4222:4222"

@@ -23,6 +23,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Gobi.MessageBus.Json\Gobi.MessageBus.Json.csproj" />
+      <ProjectReference Include="..\Gobi.MessageBus.Nats\Gobi.MessageBus.Nats.csproj" />
       <ProjectReference Include="..\Gobi.MessageBus.Services\Gobi.MessageBus.Services.csproj" />
     </ItemGroup>
 

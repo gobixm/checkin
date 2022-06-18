@@ -19,7 +19,7 @@ public sealed class JsonMessageSerializer : IMessageSerializer
     private readonly Assembly[] _assemblies;
     private readonly ConcurrentDictionary<string, Type> _cachedTypes = new();
 
-    public JsonMessageSerializer(Assembly[] assemblies)
+    public JsonMessageSerializer(params Assembly[] assemblies)
     {
         _assemblies = assemblies;
     }
@@ -33,18 +33,30 @@ public sealed class JsonMessageSerializer : IMessageSerializer
     public T? Deserialize<T>(Stream stream, byte[] discriminator) where T : class
     {
         var fullName = Encoding.UTF8.GetString(discriminator);
+        var type = FindType<T>(fullName);
+
+        return JsonSerializer.Deserialize(stream, type) as T;
+    }
+
+    public T? Deserialize<T>(ReadOnlySpan<byte> data, ReadOnlySpan<byte> discriminator) where T : class
+    {
+        var fullName = Encoding.UTF8.GetString(discriminator);
+        var type = FindType<T>(fullName);
+
+        return JsonSerializer.Deserialize(data, type) as T;
+    }
+
+    private Type FindType<T>(string fullName) where T : class
+    {
         if (!_cachedTypes.TryGetValue(fullName, out var type))
         {
             type = FindType(fullName, _assemblies);
             _cachedTypes[fullName] = type;
         }
 
-
         if (type is null)
             throw new ArgumentException($"Unknown message type: {fullName}");
-
-
-        return JsonSerializer.Deserialize(stream, type) as T;
+        return type;
     }
 
     private static Type FindType(string fullName, IEnumerable<Assembly> assemblies)

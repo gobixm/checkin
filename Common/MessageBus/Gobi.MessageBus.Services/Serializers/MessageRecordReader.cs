@@ -36,7 +36,7 @@ public sealed class MessageRecordReader
 
                 case MessageRecordFields.Timestamp:
                     var (epoch, s) = VariableLengthEncoder.DecodeULong(memory.Span);
-                    Timestamp = DateTime.UnixEpoch.AddMilliseconds(epoch);
+                    Timestamp = DateTime.SpecifyKind(DateTime.UnixEpoch.AddMilliseconds(epoch), DateTimeKind.Utc);
                     memory = memory[s..];
                     break;
             }
